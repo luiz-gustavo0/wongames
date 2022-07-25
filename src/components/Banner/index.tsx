@@ -6,7 +6,7 @@ export type BannerProps = {
   img: string
   title: string
   subtitle: string
-  buttoLabel: string
+  buttonLabel: string
   buttonLink: string
   ribbon?: React.ReactNode
   ribbonColor?: RibbonColors
@@ -17,7 +17,7 @@ const Banner = ({
   img,
   title,
   subtitle,
-  buttoLabel,
+  buttonLabel,
   buttonLink,
   ribbon,
   ribbonColor = 'primary',
@@ -34,7 +34,7 @@ const Banner = ({
       <S.Title>{title}</S.Title>
       <S.Subtitle dangerouslySetInnerHTML={{ __html: subtitle }} />
       <Button as="a" href={buttonLink} size="large">
-        {buttoLabel}
+        {buttonLabel}
       </Button>
     </S.Caption>
   </S.Wrapper>
