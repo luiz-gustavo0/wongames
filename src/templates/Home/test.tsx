@@ -8,28 +8,24 @@ import Home from '.'
 
 const props = {
   banners: bannersMock,
-  newGames: gamesMock,
+  newGames: [gamesMock[0]],
   mostPopularHightlight: highLightMock,
-  mostPopularGames: gamesMock,
-  upcommingGames: gamesMock,
+  mostPopularGames: [gamesMock[0]],
+  upcommingGames: [gamesMock[0]],
   upcommingHightlight: highLightMock,
-  upcommingMoreGames: gamesMock,
-  freeGames: gamesMock,
+  upcommingMoreGames: [gamesMock[0]],
+  freeGames: [gamesMock[0]],
   freeHightlight: highLightMock
 }
 
 describe('<Home />', () => {
-  it('should render menu and footer', () => {
+  it('should render menu, footer and sections', () => {
     renderWithTheme(<Home {...props} />)
 
     expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument()
     expect(
       screen.getByRole('heading', { name: /contact us/i })
     ).toBeInTheDocument()
-  })
-
-  it('should render the sections', () => {
-    renderWithTheme(<Home {...props} />)
 
     expect(screen.getByRole('heading', { name: /news/i })).toBeInTheDocument()
     expect(
@@ -41,13 +37,9 @@ describe('<Home />', () => {
     expect(
       screen.getByRole('heading', { name: /free games/i })
     ).toBeInTheDocument()
-  })
-
-  it('should render the sections elements', () => {
-    renderWithTheme(<Home {...props} />)
 
     expect(screen.getAllByText(/defy death 1/i)).toHaveLength(1)
-    expect(screen.getAllByText(/population zero/i)).toHaveLength(20)
+    expect(screen.getAllByText(/population zero/i)).toHaveLength(5)
     expect(screen.getAllByText(/read dead is back!/i)).toHaveLength(3)
   })
 })
