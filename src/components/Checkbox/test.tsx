@@ -37,7 +37,7 @@ describe('<Checkbox />', () => {
 
     expect(onCheck).not.toHaveBeenCalled()
 
-    userEvent.click(screen.getByRole('checkbox'))
+    await userEvent.click(screen.getByRole('checkbox'))
     await waitFor(() => {
       expect(onCheck).toHaveBeenCalledTimes(1)
     })
@@ -51,10 +51,20 @@ describe('<Checkbox />', () => {
 
     expect(onCheck).not.toHaveBeenCalled()
 
-    userEvent.click(screen.getByRole('checkbox'))
+    await userEvent.click(screen.getByRole('checkbox'))
     await waitFor(() => {
       expect(onCheck).toHaveBeenCalledTimes(1)
     })
     expect(onCheck).toHaveBeenCalledWith(false)
+  })
+
+  it('should be accessible with tab', async () => {
+    renderWithTheme(<Checkbox label="checkbox" labelFor="checkbox" />)
+
+    expect(document.body).toHaveFocus()
+
+    await userEvent.tab()
+
+    expect(screen.getByLabelText(/checkbox/i)).toHaveFocus()
   })
 })
