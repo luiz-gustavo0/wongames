@@ -3,6 +3,9 @@ module.exports = {
   stories: ['../src/components/**/stories.tsx'],
   addons: [
     '@storybook/addon-essentials',
+    '@storybook/addon-controls',
+    // '@storybook/addon-actions',
+    '@storybook/addon-viewport',
     'storybook-addon-next-router',
     'storybook-addon-next'
   ],
