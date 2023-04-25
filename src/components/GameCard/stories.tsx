@@ -9,8 +9,8 @@ export default {
     title: 'Popualtion Zero',
     developer: 'Rockstar Games',
     img: 'https://images.unsplash.com/photo-1606167668584-78701c57f13d',
-    price: 'R$ 150,00',
-    promotionalPrice: 'R$ 100,00'
+    price: 150,
+    promotionalPrice: 100
   },
   argTypes: {
     onFav: { action: 'clicked' },
