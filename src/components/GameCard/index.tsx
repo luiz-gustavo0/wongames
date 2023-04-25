@@ -8,12 +8,14 @@ import Button from 'components/Button'
 import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon'
 
 import * as S from './styles'
+import Link from 'next/link'
 
 export type GameCardProps = {
   title: string
   developer: string
   img: string
   price: string
+  slug: string
   promotionalPrice?: string
   favorite?: boolean
   onFav?: () => void
@@ -27,6 +29,7 @@ const GameCard = ({
   developer,
   img,
   price,
+  slug,
   promotionalPrice,
   favorite = false,
   onFav,
@@ -40,14 +43,18 @@ const GameCard = ({
         {ribbon}
       </Ribbon>
     )}
-    <S.ImageBox>
-      <img src={img} alt={title} />
-    </S.ImageBox>
+    <Link href={`game/${slug}`} passHref>
+      <S.ImageBox>
+        <img src={img} alt={title} />
+      </S.ImageBox>
+    </Link>
     <S.Content>
-      <S.Info>
-        <S.Title>{title}</S.Title>
-        <S.Developer>{developer}</S.Developer>
-      </S.Info>
+      <Link href={`game/${slug}`} passHref>
+        <S.Info>
+          <S.Title>{title}</S.Title>
+          <S.Developer>{developer}</S.Developer>
+        </S.Info>
+      </Link>
       <S.FavButton onClick={onFav} role="button">
         {favorite ? (
           <Favorite aria-label="Remove from wishlist" />
